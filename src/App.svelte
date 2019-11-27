@@ -2,7 +2,7 @@
   import { exampleData } from "./ExampleData.js";
   export let servers = exampleData;
   export function grabIp(text) {
-    let textbox = document.createElement('textarea');
+    const textbox = document.createElement('textarea');
     textbox.value = text;
     document.body.append(textbox);
     textbox.select();
