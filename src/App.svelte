@@ -1,7 +1,6 @@
 <script>
   import { exampleData } from "./ExampleData.js";
   export let servers = exampleData;
-  console.log(exampleData);
 </script>
 
 <style>
@@ -27,7 +26,7 @@
   {#each servers as { name, ip, banner }}
     <div class="server">
       <h2>{name}</h2>
-      <h2 class="ip">{ip}</h2>
+      <h2 class="ip">{ip}<button on:click={() => navigator.clipboard.writeText(ip)}>Copy</button></h2>
       <img src={banner} alt={`${name} banner`} />
     </div>
   {/each}
