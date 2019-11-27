@@ -1,13 +1,8 @@
 <script>
   import { exampleData } from "./ExampleData.js";
   export let servers = exampleData;
-  export function grabIp(text) {
-    const textbox = document.createElement('textarea');
-    textbox.value = text;
-    document.body.append(textbox);
-    textbox.select();
-    document.execCommand("copy");
-    textbox.remove();
+  export async function grabIp(text) {
+    await navigator.clipboard.writeText(text);
   } 
 </script>
 
