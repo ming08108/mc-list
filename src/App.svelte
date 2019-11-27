@@ -1,6 +1,12 @@
 <script>
   import { exampleData } from "./ExampleData.js";
   export let servers = exampleData;
+  export let grabIP = function(text){
+    const ips = document.getElementsByClassName('ip');
+    const toCopy = Array.from(ips).filter((ip) => {return ip.value === text})[0];
+    toCopy.select();
+    document.execCommand("copy");
+  }
 </script>
 
 <style>
@@ -11,7 +17,7 @@
   .server {
     background-color: rgba(0, 0, 0, 0.05);
   }
-  .ip {
+  .domaincopy {
     float: right;
   }
 </style>
@@ -26,7 +32,9 @@
   {#each servers as { name, ip, banner }}
     <div class="server">
       <h2>{name}</h2>
-      <h2 class="ip">{ip}<button on:click={() => navigator.clipboard.writeText(ip)}>Copy</button></h2>
+      <div class="domaincopy">
+        <input class="ip" value={ip} readonly><button on:click={() => grabIP(ip)}>Copy</button>
+      </div>
       <img src={banner} alt={`${name} banner`} />
     </div>
   {/each}
