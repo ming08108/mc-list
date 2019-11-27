@@ -2,8 +2,8 @@
   import { exampleData } from "./ExampleData.js";
   export let servers = exampleData;
   export let grabDomain = function(text){
-    const domains = document.getElementsByClassName('domain');
-    const toCopy = Array.from(domains).filter((domain) => {return domain.value === text})[0];
+    const addresses = document.getElementsByClassName('address');
+    const toCopy = Array.from(addresses).find((address) => {return address.value === text});
     toCopy.select();
     document.execCommand("copy");
   }
@@ -17,7 +17,7 @@
   .server {
     background-color: rgba(0, 0, 0, 0.05);
   }
-  .domaincopy {
+  .addresscopy {
     float: right;
   }
 </style>
@@ -29,11 +29,11 @@
 <main>
   <h1>Minecraft Server List</h1>
 
-  {#each servers as { name, domain, banner }}
+  {#each servers as { name, address, banner }}
     <div class="server">
       <h2>{name}</h2>
-      <div class="domaincopy">
-        <input class="domain" value={domain} readonly><button on:click={() => grabDomain(domain)}>Copy</button>
+      <div class="addresscopy">
+        <input class="address" value={address} readonly><button on:click={() => grabDomain(address)}>Copy</button>
       </div>
       <img src={banner} alt={`${name} banner`} />
     </div>
