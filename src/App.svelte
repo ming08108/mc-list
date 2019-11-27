@@ -1,10 +1,9 @@
 <script>
   import { exampleData } from "./ExampleData.js";
   export let servers = exampleData;
-  console.log(exampleData);
-  export function grabip(text) {
+  export function grabIp(text) {
     let textbox = document.createElement('textarea');
-    textbox.value= text['ip'];
+    textbox.value = text;
     document.body.append(textbox);
     textbox.select();
     document.execCommand("copy");
@@ -35,7 +34,7 @@
   {#each servers as { name, ip, banner }}
     <div class="server">
       <h2>{name}</h2>
-      <h2 class="ip">{ip}<button on:click={() => grabip({ip})}>Copy</button></h2>
+      <h2 class="ip">{ip}<button on:click={() => grabIp({ip}['ip'])}>Copy</button></h2>
       <img src={banner} alt={`${name} banner`} />
     </div>
   {/each}
