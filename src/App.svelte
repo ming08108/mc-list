@@ -28,7 +28,7 @@
     <div class="server">
       <h2>{name}</h2>
       <div class="ip">
-        <CopyInput bind:ip={ip}></CopyInput>
+        <CopyInput bind:ip />
       </div>
       <img src={banner} alt={`${name} banner`} />
     </div>
