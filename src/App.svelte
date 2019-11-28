@@ -3,7 +3,7 @@
   export let servers = exampleData;
   export let grabDomain = function(text){
     const addresses = document.getElementsByClassName('address');
-    const toCopy = Array.from(addresses).find((address) => {return address.value === text});
+    const toCopy = Array.from(addresses).find((address) => address.value === text);
     toCopy.select();
     document.execCommand("copy");
   }
