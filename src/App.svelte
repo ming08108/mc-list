@@ -1,12 +1,7 @@
 <script>
   import { exampleData } from "./ExampleData.js";
+  import CopyInput from "./CopyInput.svelte";
   export let servers = exampleData;
-  export let grabIp = function(text){
-    const ips = document.getElementsByClassName('ip');
-    const toCopy = Array.from(ips).find(({value}) => value === text);
-    toCopy.select();
-    document.execCommand("copy");
-  }
 </script>
 
 <style>
@@ -17,7 +12,7 @@
   .server {
     background-color: rgba(0, 0, 0, 0.05);
   }
-  .ipcopy {
+  .ip {
     float: right;
   }
 </style>
@@ -32,8 +27,8 @@
   {#each servers as { name, ip, banner }}
     <div class="server">
       <h2>{name}</h2>
-      <div class="ipcopy">
-        <input class="ip" value={ip} readonly><button on:click={() => grabIp(ip)}>Copy</button>
+      <div class="ip">
+        <CopyInput bind:ip={ip}></CopyInput>
       </div>
       <img src={banner} alt={`${name} banner`} />
     </div>
