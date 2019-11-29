@@ -1,5 +1,6 @@
 <script>
   import { exampleData } from "./ExampleData.js";
+  import CopyInput from "./CopyInput.svelte";
   export let servers = exampleData;
 </script>
 
@@ -26,7 +27,9 @@
   {#each servers as { name, ip, banner }}
     <div class="server">
       <h2>{name}</h2>
-      <h2 class="ip">{ip}<button on:click={() => navigator.clipboard.writeText(ip)}>Copy</button></h2>
+      <div class="ip">
+        <CopyInput bind:ip />
+      </div>
       <img src={banner} alt={`${name} banner`} />
     </div>
   {/each}
