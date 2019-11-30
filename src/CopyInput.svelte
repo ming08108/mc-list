@@ -21,6 +21,7 @@
   input {
     border: none;
     width: 25em;
+    padding: 0.5em;
   }
   div {
     display: flex;
